@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://pbiqg4kwd8po"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lrx7j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_w3j50"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.16, -0.209674)
+shape = SubResource("CircleShape2D_lrx7j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(22.9313, 4.46025)
+mesh = SubResource("SphereMesh_w3j50")
