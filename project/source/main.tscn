@@ -1,6 +1,24 @@
-[gd_scene format=3 uid="uid://3obgln0pies6"]
+[gd_scene load_steps=5 format=3 uid="uid://3obgln0pies6"]
+
+[ext_resource type="PackedScene" uid="uid://pbiqg4kwd8po" path="res://Bullet.tscn" id="1_e5oto"]
+[ext_resource type="Script" path="res://source/MAIN.gd" id="1_e62wv"]
+[ext_resource type="PackedScene" uid="uid://cmh5cgbjo3ce3" path="res://Player_1.tscn" id="2_hi0ow"]
+[ext_resource type="Script" path="res://Player_1.gd" id="4_su2iw"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_e62wv")
+
+[node name="RigidBody2D" parent="." instance=ExtResource("1_e5oto")]
+position = Vector2(126, 124)
+gravity_scale = 1.66533e-16
+linear_velocity = Vector2(-100, 2.08165e-12)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_hi0ow")]
+position = Vector2(190, 161)
+rotation = 2.26893
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_su2iw")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
