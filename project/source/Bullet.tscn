@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://pbiqg4kwd8po"]
+[gd_scene load_steps=5 format=3 uid="uid://pbiqg4kwd8po"]
+
+[ext_resource type="Script" path="res://source/Bullet.gd" id="1_b2x86"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lrx7j"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_w3j50"]
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_kseku"]
+
+[node name="Bullet" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_b2x86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.16, -0.209674)
@@ -14,3 +21,9 @@ shape = SubResource("CircleShape2D_lrx7j")
 position = Vector2(4.76837e-07, 4.76837e-07)
 scale = Vector2(22.9313, 4.46025)
 mesh = SubResource("SphereMesh_w3j50")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.2, -0.25)
+shape = SubResource("CircleShape2D_kseku")

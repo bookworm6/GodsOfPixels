@@ -9,13 +9,20 @@
 script = ExtResource("1_e62wv")
 
 [node name="RigidBody2D" parent="." instance=ExtResource("1_e5oto")]
+visible = false
 position = Vector2(126, 124)
-gravity_scale = 1.66533e-16
 linear_velocity = Vector2(-100, 2.08165e-12)
+script = null
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_hi0ow")]
 position = Vector2(190, 161)
-rotation = 2.26893
+rotation = 0.0
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_su2iw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_spawn_timer_timeout"]

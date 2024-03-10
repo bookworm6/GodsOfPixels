@@ -13,7 +13,7 @@ func _process(delta):
 	if Input.is_action_pressed("w"):
 		rotation_degrees = 0
 		velocity.y = -500
-		velocity.x = 0
+		
 	elif Input.is_action_pressed("a"):
 		rotation_degrees = 270
 		velocity.x = -500
@@ -29,7 +29,7 @@ func _process(delta):
 	else:
 		velocity.x = 0
 		velocity.y = 0
-	print(rotation_degrees)
+	#print(rotation_degrees)
 
 		
 	

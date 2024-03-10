@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://chs55307icmtp"]
+
+[ext_resource type="Script" path="res://source/enemy.gd" id="1_d1pvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4i6o"]
+size = Vector2(4.8, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3qiwm"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_d1pvh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = 1.5708
+scale = Vector2(20, 10)
+shape = SubResource("RectangleShape2D_g4i6o")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-8.98154, -6.30076)
+rotation = 1.5708
+scale = Vector2(92.6385, 98.0369)
+mesh = SubResource("BoxMesh_3qiwm")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+position = Vector2(47, -3)
+rotation = 1.5708
+scale = Vector2(37.5, 25)
+mesh = SubResource("BoxMesh_3qiwm")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -27.0
+offset_top = -13.0
+offset_right = 26.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Enemy"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]
