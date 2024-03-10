@@ -1,7 +1,7 @@
 extends Node
 @onready var bullet = $RigidBody2D
 @onready var Character = $CharacterBody2D
-var bulletBase = preload("res://Bullet.tscn")
+var bulletBase = preload("res://source/Bullet.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
