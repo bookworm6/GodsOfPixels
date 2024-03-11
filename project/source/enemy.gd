@@ -92,7 +92,7 @@ func _physics_process(delta):
 	
 
 func _on_shoot_timer_timeout():
-	shoot.emit(position,$BulletOriginPoint.position)
+	shoot.emit(position,targetPosition)
 	shootTimerStarted = false
 
 func setTargetPosition(vector2Position):
