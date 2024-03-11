@@ -38,4 +38,7 @@ text = "Enemy"
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="BulletOriginPoint" type="Node2D" parent="."]
+position = Vector2(63, -2)
+
 [connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]

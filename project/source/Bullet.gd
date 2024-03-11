@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 var firingVelocity
 # Called when the node enters the scene tree for the first time.
@@ -8,12 +8,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	move_and_slide()
 
 
 
 func fireAtTarget(startPositionVector,targetPositionVector):
+	position = startPositionVector
 	var startPos = startPositionVector
-	var firingVelocity = startPos.direction_to(targetPositionVector)*1000
-	set_linear_velocity(firingVelocity)
-	
+	print("start position: "+str(startPos)+"    target position: "+str(targetPositionVector))
+	var firingVelocity = (startPos.direction_to(targetPositionVector))*1000
+	velocity = firingVelocity
+
+func _on_visible_on_screen_enabler_2d_screen_exited():
+	queue_free()
+
+func bulletColision():
+	pass
+
+
+func _on_area_2d_body_entered(body):
+	body.bulletColision()

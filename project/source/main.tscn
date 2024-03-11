@@ -1,18 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://3obgln0pies6"]
+[gd_scene load_steps=4 format=3 uid="uid://3obgln0pies6"]
 
-[ext_resource type="PackedScene" uid="uid://pbiqg4kwd8po" path="res://source/Bullet.tscn" id="1_e5oto"]
 [ext_resource type="Script" path="res://source/MAIN.gd" id="1_e62wv"]
 [ext_resource type="PackedScene" uid="uid://cmh5cgbjo3ce3" path="res://source/Player_1.tscn" id="2_hi0ow"]
 [ext_resource type="Script" path="res://source/Player_1.gd" id="4_su2iw"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_e62wv")
-
-[node name="RigidBody2D" parent="." instance=ExtResource("1_e5oto")]
-visible = false
-position = Vector2(126, 124)
-linear_velocity = Vector2(-100, 2.08165e-12)
-script = null
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_hi0ow")]
 position = Vector2(190, 161)
@@ -25,4 +18,5 @@ script = ExtResource("4_su2iw")
 wait_time = 5.0
 one_shot = true
 
+[connection signal="player1Dead" from="CharacterBody2D" to="." method="_on_character_body_2d_player_1_dead"]
 [connection signal="timeout" from="Timer" to="." method="_on_spawn_timer_timeout"]

@@ -2,18 +2,19 @@ extends CharacterBody2D
 
 var goalPosition
 var shootTimerStarted
-var player1Position
+var targetPosition
 var random 
 var bulletScene
 var viewportWidth
 var viewportHeight
 var speed
 var hasEnteredPlayingArea
+signal shoot(startPosition,targetPosition)
 
 
 func _ready():
 	random = RandomNumberGenerator.new()
-	player1Position = Vector2.ZERO
+	targetPosition = Vector2.ZERO
 	hasEnteredPlayingArea = false
 	speed = 200
 	shootTimerStarted = false
@@ -24,82 +25,81 @@ func _ready():
 	if startSide == 1: #comes in from the left
 		position.x = -10
 		position.y = random.randf_range(-10,viewportHeight+10)
-		print("start left")
+		#print("start left")
 		goalPosition = Vector2(viewportWidth,random.randf_range(0,viewportHeight))
 	elif startSide == 3: #comes in from the right
 		position.x = viewportWidth+10
 		position.y = random.randf_range(-10,viewportHeight+10)
 		goalPosition = Vector2(0,random.randf_range(0,viewportHeight))
-		print("start right")
+		#print("start right")
 	elif startSide == 2: # comes in from top
 		position.y = -10
 		position.x = random.randf_range(-10,viewportWidth+10)
 		goalPosition = Vector2(random.randf_range(0,viewportWidth),viewportHeight)
-		print("start top")
+		#print("start top")
 	elif startSide == 4: #comes in from bottom
 		position.y = viewportHeight+10
 		position.x = random.randf_range(-10,viewportWidth+10)
 		goalPosition  = Vector2(random.randf_range(0,viewportWidth),0)
-		print("start bottom")
+		#print("start bottom")
 	velocity = position.direction_to(goalPosition)*speed
 
 
 func _physics_process(delta):
-	if player1Position!=Vector2.ZERO:
-		look_at(player1Position)
+	if targetPosition!=Vector2.ZERO:
+		look_at(targetPosition)
 		if shootTimerStarted == false:
 			$Timer.start(random.randf_range(.1,3))
 			shootTimerStarted = true
 	if hasEnteredPlayingArea==false:
 		if 0<position.x and viewportWidth>position.x and 0<position.y and viewportHeight>position.y:
 			hasEnteredPlayingArea=true
-			print("has entered playing area")
+			#print("has entered playing area")
 	if hasEnteredPlayingArea == true:
 		if position.y<=0:
 			goalPosition = Vector2(random.randf_range(0,viewportWidth),viewportHeight)
-			print("position:" +str(position))
-			print("too high")
+			#print("position:" +str(position))
+			#print("too high")
 			velocity = position.direction_to(goalPosition)*speed
 			hasEnteredPlayingArea=false
-			print("has left playing area")
+			#print("has left playing area")
 		elif position.y>=viewportHeight:
 			goalPosition  = Vector2(random.randf_range(0,viewportWidth),0)
 			velocity = position.direction_to(goalPosition)*speed
-			print("position:" +str(position))
-			print("too low")
+			#print("position:" +str(position))
+			#print("too low")
 			hasEnteredPlayingArea=false
-			print("has left playing area")
+			#print("has left playing area")
 		elif position.x<0:
 			goalPosition = Vector2(viewportWidth,random.randf_range(0,viewportHeight))
 			velocity = position.direction_to(goalPosition)*speed
-			print("position:" +str(position))
-			print("too left")
+			#print("position:" +str(position))
+			#print("too left")
 			hasEnteredPlayingArea=false
-			print("has left playing area")
+			#print("has left playing area")
 		elif position.x>viewportWidth:
 			goalPosition = Vector2(0,random.randf_range(0,viewportHeight))
 			velocity = position.direction_to(goalPosition)*speed
-			print("position:" +str(position))
-			print("too right")
+			#print("position:" +str(position))
+			#print("too right")
 			hasEnteredPlayingArea=false
-			print("has left playing area")
-	print("position:" +str(position))
-	print("velocity" + str(velocity))
-	print("goal position: "+str(goalPosition))
+			#print("has left playing area")
+	#print("position:" +str(position))
+	#print("velocity" + str(velocity))
+	#print("goal position: "+str(goalPosition))
 		
 	move_and_slide()
 	
 
 func _on_shoot_timer_timeout():
-	var bulletInstance = bulletScene.instantiate()
-	bulletInstance.set_position(position)
-	bulletInstance.rotation_degrees = rotation_degrees+90
-	add_child(bulletInstance)
-	bulletInstance.fireAtTarget(position,player1Position)
+	shoot.emit(position,$BulletOriginPoint.position)
 	shootTimerStarted = false
 
-func setPlayer1Position(vector2Position):
-	player1Position = vector2Position
-	
+func setTargetPosition(vector2Position):
+	targetPosition = vector2Position
+
+func bulletColision():
+	print("animation will play here")
+	print("bullet colision handle later")
 	
 

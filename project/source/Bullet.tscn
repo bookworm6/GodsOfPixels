@@ -8,9 +8,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kseku"]
 
-[node name="Bullet" type="RigidBody2D"]
-gravity_scale = 0.0
-lock_rotation = true
+[node name="Bullet" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_b2x86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,3 +26,8 @@ mesh = SubResource("SphereMesh_w3j50")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(1.2, -0.25)
 shape = SubResource("CircleShape2D_kseku")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

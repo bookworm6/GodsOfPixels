@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bgxis3jljtt8f"]
+
+[node name="Dead" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 387.0
+offset_top = 251.0
+offset_right = 873.0
+offset_bottom = 400.0
+text = "DEAD"

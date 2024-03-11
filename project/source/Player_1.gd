@@ -2,10 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+signal player1Dead
 
 
 func _process(delta):
@@ -29,9 +26,13 @@ func _process(delta):
 	else:
 		velocity.x = 0
 		velocity.y = 0
+	move_and_slide()
 	#print(rotation_degrees)
 
-		
+func bulletColision():
+	player1Dead.emit()
+	print("player dead")
+	
 	
 
 	move_and_slide()
