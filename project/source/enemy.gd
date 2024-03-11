@@ -49,7 +49,7 @@ func _physics_process(delta):
 	if targetPosition!=Vector2.ZERO:
 		look_at(targetPosition)
 		if shootTimerStarted == false:
-			$Timer.start(random.randf_range(2,7 ))
+			$Timer.start(random.randf_range(1,5 ))
 			shootTimerStarted = true
 	if hasEnteredPlayingArea==false:
 		if 0<position.x and viewportWidth>position.x and 0<position.y and viewportHeight>position.y:

@@ -9,7 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	look_at(targetPosition)
+	if targetPosition!=null:
+		look_at(targetPosition)
 	move_and_slide()
 
 func setAreaBodyCollisionMask(maskNumber,status):
