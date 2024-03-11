@@ -53,7 +53,7 @@ func _on_enemy_bullet_fired(position,targetPosition):
 	var bulletInstance = bulletBase.instantiate()
 	add_child(bulletInstance)
 	#bulletInstance.rotation_degrees = rotation_degrees+90
-	bulletInstance.fireAtTarget(position,targetPosition)
+	bulletInstance.fireAtTarget(position,Character.position)
 
 
 func _on_character_body_2d_player_1_dead():
