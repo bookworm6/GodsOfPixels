@@ -6,6 +6,9 @@ size = Vector2(4.8, 12)
 [sub_resource type="BoxMesh" id="BoxMesh_2jihk"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+rotation = 1.5708
+collision_layer = 10
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
