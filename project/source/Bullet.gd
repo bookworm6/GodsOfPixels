@@ -10,6 +10,10 @@ func _ready():
 func _process(delta):
 	move_and_slide()
 
+func setAreaBodyCollisionMask(maskNumber,status):
+	$Area2D.set_collision_mask_value(maskNumber,status)
+	
+
 
 
 func fireAtTarget(startPositionVector,targetPositionVector):
@@ -30,3 +34,9 @@ func _on_area_2d_body_entered(body):
 	print(body.get_name())
 	body.bulletColision()
 
+#
+#
+#func _on_area_2d_area_entered(area):
+	#var parent = area.get_parent()
+	#print(parent.get_name())
+	#parent.bulletColision() 
