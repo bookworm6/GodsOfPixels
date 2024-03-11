@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://source/enemy.gd" id="1_d1pvh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4i6o"]
-size = Vector2(4.8, 12)
+size = Vector2(4.75001, 10.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3qiwm"]
 
@@ -11,7 +11,7 @@ size = Vector2(4.8, 12)
 script = ExtResource("1_d1pvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(-9.00009, -7.50011)
 rotation = 1.5708
 scale = Vector2(20, 10)
 shape = SubResource("RectangleShape2D_g4i6o")
