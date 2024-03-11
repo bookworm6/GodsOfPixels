@@ -7,6 +7,7 @@
 [sub_resource type="SphereMesh" id="SphereMesh_w3j50"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kseku"]
+radius = 15.0
 
 [node name="Bullet" type="CharacterBody2D"]
 motion_mode = 1
@@ -28,6 +29,8 @@ scale = Vector2(1.2, -0.25)
 shape = SubResource("CircleShape2D_kseku")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.19209e-07, -2.38419e-07)
+scale = Vector2(1.2, 0.4)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

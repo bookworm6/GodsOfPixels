@@ -15,6 +15,7 @@ func shoot():
 	var newBullet = bulletBase.instantiate()
 	newBullet.set_position(Character.position)
 	add_child(newBullet)
+	newBullet.set_collision_mask_value(3,true)
 	newBullet.rotation_degrees = Character.rotation_degrees+90
 	if Character.rotation_degrees == -180:
 		newBullet.velocity = (Vector2(0, 1000))
@@ -52,6 +53,7 @@ func _on_enemy_bullet_fired(position,targetPosition):
 	print("targetPosition"+str(targetPosition))
 	var bulletInstance = bulletBase.instantiate()
 	add_child(bulletInstance)
+	bulletInstance. set_collision_mask_value(2,true)
 	#bulletInstance.rotation_degrees = rotation_degrees+90
 	bulletInstance.fireAtTarget(position,Character.position)
 
