@@ -16,7 +16,7 @@ func _ready():
 	random = RandomNumberGenerator.new()
 	targetPosition = Vector2.ZERO
 	hasEnteredPlayingArea = false
-	speed = 200
+	speed = 500
 	shootTimerStarted = false
 	bulletScene = load("res://source/Bullet.tscn")
 	var startSide = random.randi_range(1,4)
@@ -49,7 +49,7 @@ func _physics_process(delta):
 	if targetPosition!=Vector2.ZERO:
 		look_at(targetPosition)
 		if shootTimerStarted == false:
-			$Timer.start(random.randf_range(.1,3))
+			$Timer.start(random.randf_range(2,7 ))
 			shootTimerStarted = true
 	if hasEnteredPlayingArea==false:
 		if 0<position.x and viewportWidth>position.x and 0<position.y and viewportHeight>position.y:
@@ -100,6 +100,8 @@ func setTargetPosition(vector2Position):
 
 func bulletColision():
 	print("animation will play here")
-	print("bullet colision handle later")
+	$MeshInstance2D.hide()
+	$MeshInstance2D2.hide()
+	queue_free()
 	
 

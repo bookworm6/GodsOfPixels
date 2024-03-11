@@ -36,11 +36,12 @@ func _process(delta):
 	if Input.is_action_just_pressed("SPACEBAR"):
 		shoot()
 	for enemy in enemeySpawnList:
-		enemy.setTargetPosition(Character.position)
+		if enemy!=null:
+			enemy.setTargetPosition(Character.position)
 
 
 func _on_spawn_timer_timeout():
-	#spawnTimerStarted = false
+	spawnTimerStarted = false
 	var newEnemy = enemyScene.instantiate()
 	add_child(newEnemy)
 	newEnemy.shoot.connect(_on_enemy_bullet_fired)

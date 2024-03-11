@@ -10,6 +10,8 @@ script = ExtResource("1_e62wv")
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_hi0ow")]
 position = Vector2(190, 161)
 rotation = 0.0
+collision_layer = 10
+collision_mask = 10
 script = ExtResource("4_su2iw")
 
 [node name="Timer" type="Timer" parent="."]

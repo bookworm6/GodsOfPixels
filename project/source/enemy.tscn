@@ -8,8 +8,8 @@ size = Vector2(4.75001, 10.2)
 [sub_resource type="BoxMesh" id="BoxMesh_3qiwm"]
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 12
+collision_mask = 12
 script = ExtResource("1_d1pvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

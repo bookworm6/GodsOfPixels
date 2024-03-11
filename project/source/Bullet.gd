@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var firingVelocity
+var targetPosition
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -8,6 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	look_at(targetPosition)
 	move_and_slide()
 
 func setAreaBodyCollisionMask(maskNumber,status):
@@ -17,6 +19,7 @@ func setAreaBodyCollisionMask(maskNumber,status):
 
 
 func fireAtTarget(startPositionVector,targetPositionVector):
+	targetPosition = targetPositionVector
 	position = startPositionVector
 	var startPos = startPositionVector
 	print("start position: "+str(startPos)+"    target position: "+str(targetPositionVector))
