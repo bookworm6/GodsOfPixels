@@ -41,7 +41,7 @@ func shield_move():
 		shield.position.x = Character.position.x + 100
 		shield.position.y = Character.position.y
 		shield.rotation_degrees = 90
-	elif right == true:
+	elif up == true:
 		shield.position.x = Character.position.x
 		shield.position.y = Character.position.y - 100
 		shield.rotation_degrees = 0
