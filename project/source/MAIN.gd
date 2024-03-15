@@ -5,12 +5,17 @@ var bulletBase = preload("res://source/Bullet.tscn")
 var enemyScene = preload("res://source/enemy.tscn")
 var spawnTimerStarted
 var enemeySpawnList 
+var down
+var left
+var right
+var up
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawnTimerStarted = false
 	enemeySpawnList = []
+	down = true;
 
 func shoot():
 	var newBullet = bulletBase.instantiate()
@@ -23,10 +28,7 @@ func shoot():
 	var newBulletYvel = 1000*cos(Character.rotation)
 	var newBulletXvel = 1000*sin(Character.rotation)
 	newBullet.velocity = Vector2(newBulletXvel, -newBulletYvel)
-var down
-var left
-var right
-var up
+
 func shield_move():
 	
 	if down == true:
