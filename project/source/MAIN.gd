@@ -1,5 +1,6 @@
 extends Node
 @onready var Character = $CharacterBody2D
+@onready var shield = $StaticBody2D
 var bulletBase = preload("res://source/Bullet.tscn")
 var enemyScene = preload("res://source/enemy.tscn")
 var spawnTimerStarted
@@ -18,15 +19,33 @@ func shoot():
 	newBullet.set_collision_mask_value(3,true)
 	newBullet.setAreaBodyCollisionMask(3,true)
 	newBullet.rotation_degrees = Character.rotation_degrees+90
-	if Character.rotation_degrees == -180:
-		newBullet.velocity = (Vector2(0, 1000))
-	if Character.rotation_degrees == 0:
-		newBullet.velocity = (Vector2(0, -1000))
-	if Character.rotation_degrees == 90:
-		newBullet.velocity = (Vector2(1000, 0))
-	if Character.rotation_degrees == -90:
-		newBullet.velocity = (Vector2(-1000, 0))
-
+	var newbulletrotation = 90 - abs(Character.rotation_degrees)
+	var newBulletYvel = 1000*cos(Character.rotation)
+	var newBulletXvel = 1000*sin(Character.rotation)
+	newBullet.velocity = Vector2(newBulletXvel, -newBulletYvel)
+var down
+var left
+var right
+var up
+func shield_move():
+	
+	if down == true:
+		shield.position.x = Character.position.x
+		shield.position.y = Character.position.y + 100
+		shield.rotation_degrees = 0
+	elif left == true:
+		shield.position.x = Character.position.x - 100
+		shield.position.y = Character.position.y
+		shield.rotation_degrees = 90
+	elif right == true:
+		shield.position.x = Character.position.x + 100
+		shield.position.y = Character.position.y
+		shield.rotation_degrees = 90
+	elif right == true:
+		shield.position.x = Character.position.x
+		shield.position.y = Character.position.y - 100
+		shield.rotation_degrees = 0
+		
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -38,6 +57,26 @@ func _process(delta):
 	for enemy in enemeySpawnList:
 		if enemy!=null:
 			enemy.setTargetPosition(Character.position)
+	shield_move()
+	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
+		shieldcheck()
+func shieldcheck():
+	if Input.is_action_just_pressed("ui_down"):
+		down = true
+	else:
+		down = false
+	if Input.is_action_just_pressed("ui_left"):
+		left = true
+	else:
+		left = false
+	if Input.is_action_just_pressed("ui_right"):
+		right = true
+	else:
+		right = false
+	if Input.is_action_just_pressed("ui_up"):
+		up = true
+	else:
+		up = false
 
 
 func _on_spawn_timer_timeout():
