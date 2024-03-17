@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://3obgln0pies6"]
+[gd_scene load_steps=6 format=3 uid="uid://3obgln0pies6"]
 
 [ext_resource type="Script" path="res://source/MAIN.gd" id="1_e62wv"]
 [ext_resource type="PackedScene" uid="uid://cmh5cgbjo3ce3" path="res://source/Player_1.tscn" id="2_hi0ow"]
+[ext_resource type="Texture2D" uid="uid://dux6ej64mwmc5" path="res://source/Images/Screenshot 2024-03-17 at 12.34.50 PM.png" id="2_wh8bx"]
 [ext_resource type="PackedScene" uid="uid://cp1t7sdcugtu8" path="res://Shield.tscn" id="4_eb0c7"]
 [ext_resource type="Script" path="res://source/Player_1.gd" id="4_su2iw"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_e62wv")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(585, 478.75)
+scale = Vector2(0.907295, 0.886225)
+texture = ExtResource("2_wh8bx")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_hi0ow")]
 position = Vector2(190, 160)
