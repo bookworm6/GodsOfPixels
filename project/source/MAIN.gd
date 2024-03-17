@@ -9,10 +9,16 @@ var down
 var left
 var right
 var up
+var spawnTimerUpperLimit
+var spawnTimerLowerLimit
+var random 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	spawnTimerLowerLimit = 5
+	spawnTimerUpperLimit = 10
+	random = RandomNumberGenerator.new()
 	spawnTimerStarted = false
 	enemeySpawnList = []
 	down = true;
@@ -53,7 +59,7 @@ func shield_move():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if spawnTimerStarted == false:
-		$Timer.start()
+		$Timer.start(random.randf_range(spawnTimerLowerLimit,spawnTimerUpperLimit))
 		spawnTimerStarted = true
 	if Input.is_action_just_pressed("SPACEBAR"):
 		shoot()
@@ -63,6 +69,11 @@ func _process(delta):
 	shield_move()
 	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 		shieldcheck()
+	if spawnTimerLowerLimit>.3:
+		spawnTimerLowerLimit-.001
+	if spawnTimerUpperLimit>1.5:
+		spawnTimerUpperLimit-.001
+	
 func shieldcheck():
 	if Input.is_action_just_pressed("ui_down"):
 		down = true

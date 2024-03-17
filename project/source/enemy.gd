@@ -10,9 +10,11 @@ var viewportHeight
 var speed
 var hasEnteredPlayingArea
 signal shoot(startPosition,targetPosition)
+var currentlyExploding
 
 
 func _ready():
+	currentlyExploding = false
 	random = RandomNumberGenerator.new()
 	$AnimatedSprite2D.hide()
 	targetPosition = Vector2.ZERO
@@ -57,6 +59,25 @@ func _physics_process(delta):
 			hasEnteredPlayingArea=true
 			#print("has entered playing area")
 	if hasEnteredPlayingArea == true:
+		if velocity.length()<300 and currentlyExploding == false:
+			print ("enemy slow velocity: "+str(velocity.length()))
+			print("test")
+			var goalVelocity = velocity
+			goalVelocity = goalVelocity.normalized()*(speed*-1)
+			print("new goal velocity: "+str(goalVelocity.length()))
+			velocity = goalVelocity
+			print("new velocity: "+str(velocity.length()))
+			#var goalPositionDirection = random.randi_range(1,4)
+			#if goalPositionDirection == 1:
+				#goalPosition = Vector2(random.randf_range(0,viewportWidth),viewportHeight)
+			#elif goalPositionDirection == 2:
+				#goalPosition  = Vector2(random.randf_range(0,viewportWidth),0)
+			#elif goalPositionDirection ==3:
+				#goalPosition = Vector2(viewportWidth,random.randf_range(0,viewportHeight))
+			#elif goalPositionDirection ==4:
+				#goalPosition = Vector2(0,random.randf_range(0,viewportHeight))
+			#velocity = position.direction_to(goalPosition)*speed
+			
 		if position.y<=0:
 			goalPosition = Vector2(random.randf_range(0,viewportWidth),viewportHeight)
 			#print("position:" +str(position))
@@ -101,12 +122,16 @@ func setTargetPosition(vector2Position):
 	targetPosition = vector2Position
 
 func bulletColision():
-	print("animation will play here")
-	velocity = Vector2.ZERO
-	$AnimatedSprite2D.show()
-	$AudioStreamPlayer2D.play()
-	$AnimatedSprite2D.play("explode")
-	$AnimationPlayer.play("hit")
+	if currentlyExploding == false:
+		currentlyExploding = true
+		velocity = Vector2.ZERO
+		$Timer.stop()
+		print("animation will play here")
+		velocity = Vector2.ZERO
+		$AnimatedSprite2D.show()
+		$AudioStreamPlayer2D.play()
+		$AnimatedSprite2D.play("explode")
+		$AnimationPlayer.play("hit")
 	
 	
 	#$MeshInstance2D.hide()
