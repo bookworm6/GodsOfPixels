@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmh5cgbjo3ce3"]
+[gd_scene load_steps=5 format=3 uid="uid://cmh5cgbjo3ce3"]
 
 [ext_resource type="Texture2D" uid="uid://c5f26wxmtxsjk" path="res://source/Images/player spaceship 2 (1).png" id="1_h4pis"]
+[ext_resource type="AudioStream" uid="uid://brdgf06u7j154" path="res://source/Audio files/laser-gun-81720 (1).mp3" id="2_e2nup"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d400s"]
 size = Vector2(5.75, 11.9)
@@ -11,6 +12,9 @@ size = Vector2(5.75, 11.9)
 rotation = 1.5708
 collision_layer = 10
 collision_mask = 10
+
+[node name="BulletFireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_e2nup")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.499959, -9.50011)

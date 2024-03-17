@@ -18,6 +18,7 @@ func _ready():
 	down = true;
 
 func shoot():
+	Character.get_node("BulletFireSound").play()
 	var newBullet = bulletBase.instantiate()
 	newBullet.set_position(Character.get_node("BulletOriginPoint").get_global_position())
 	add_child(newBullet)
@@ -104,3 +105,7 @@ func _on_enemy_bullet_fired(position,targetPosition):
 
 func _on_character_body_2d_player_1_dead():
 	get_tree().change_scene_to_file("res://source/dead.tscn")
+
+
+func _on_background_music_finished():
+	$BackgroundMusic.play()

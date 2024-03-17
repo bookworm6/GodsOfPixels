@@ -39,6 +39,10 @@ func _on_area_2d_body_entered(body):
 	body.bulletColision()
 	if body is StaticBody2D:
 		queue_free()
+	if body.is_in_group("enemy"):
+		queue_free()
+
+
 	
 	
 

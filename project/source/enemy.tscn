@@ -1,14 +1,134 @@
-[gd_scene load_steps=5 format=3 uid="uid://chs55307icmtp"]
+[gd_scene load_steps=17 format=3 uid="uid://chs55307icmtp"]
 
 [ext_resource type="Script" path="res://source/enemy.gd" id="1_d1pvh"]
 [ext_resource type="Texture2D" uid="uid://dim2sp8x8p5wo" path="res://source/Images/enemy spaceship.png" id="2_s12qt"]
+[ext_resource type="Texture2D" uid="uid://coqgkpbre87y5" path="res://source/Images/explosionSpriteSheet.png" id="3_jsxm7"]
+[ext_resource type="AudioStream" uid="uid://w7idcrgbuue7" path="res://source/Audio files/explosionCrunch_000.ogg" id="4_rhikt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4i6o"]
 size = Vector2(4.75001, 10.4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3qiwm"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_vmu6n"]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySpaceship:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_voync"]
+resource_name = "hit"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySpaceship:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.7, 0.7), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lc7er"]
+_data = {
+"RESET": SubResource("Animation_vmu6n"),
+"hit": SubResource("Animation_voync")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psjbd"]
+atlas = ExtResource("3_jsxm7")
+region = Rect2(908, 446, 227, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_458is"]
+atlas = ExtResource("3_jsxm7")
+region = Rect2(0, 669, 227, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ddwq"]
+atlas = ExtResource("3_jsxm7")
+region = Rect2(227, 669, 227, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw61a"]
+atlas = ExtResource("3_jsxm7")
+region = Rect2(454, 669, 227, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ra5"]
+atlas = ExtResource("3_jsxm7")
+region = Rect2(681, 669, 227, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqq7m"]
+atlas = ExtResource("3_jsxm7")
+region = Rect2(908, 669, 227, 223)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7be3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psjbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_458is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ddwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw61a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ra5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqq7m")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(0, 7)
 collision_layer = 44
 collision_mask = 44
@@ -53,5 +173,18 @@ position = Vector2(-7, -7)
 rotation = -1.5708
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_s12qt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lc7er")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u7be3")
+animation = &"explode"
+frame_progress = 0.747104
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rhikt")
 
 [connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]

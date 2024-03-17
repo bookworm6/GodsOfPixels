@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw34ukeutsoig"
-path="res://.godot/imported/Screenshot 2024-03-17 at 11.53.25 AM.png-cb342c83c1edc2cfb733b2711d79804c.ctex"
+uid="uid://coqgkpbre87y5"
+path="res://.godot/imported/explosionSpriteSheet.png-b5346cc582782e15b844e11655f73395.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://source/Images/Screenshot 2024-03-17 at 11.53.25 AM.png"
-dest_files=["res://.godot/imported/Screenshot 2024-03-17 at 11.53.25 AM.png-cb342c83c1edc2cfb733b2711d79804c.ctex"]
+source_file="res://source/Images/explosionSpriteSheet.png"
+dest_files=["res://.godot/imported/explosionSpriteSheet.png-b5346cc582782e15b844e11655f73395.ctex"]
 
 [params]
 

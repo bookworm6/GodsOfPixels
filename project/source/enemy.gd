@@ -14,6 +14,7 @@ signal shoot(startPosition,targetPosition)
 
 func _ready():
 	random = RandomNumberGenerator.new()
+	$AnimatedSprite2D.hide()
 	targetPosition = Vector2.ZERO
 	hasEnteredPlayingArea = false
 	speed = 500
@@ -101,8 +102,17 @@ func setTargetPosition(vector2Position):
 
 func bulletColision():
 	print("animation will play here")
-	$MeshInstance2D.hide()
-	$MeshInstance2D2.hide()
-	queue_free()
+	velocity = Vector2.ZERO
+	$AnimatedSprite2D.show()
+	$AudioStreamPlayer2D.play()
+	$AnimatedSprite2D.play("explode")
+	$AnimationPlayer.play("hit")
+	
+	
+	#$MeshInstance2D.hide()
+	#$MeshInstance2D2.hide()
+	#queue_free()
+
+
 	
 
