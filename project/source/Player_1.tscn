@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmh5cgbjo3ce3"]
+[gd_scene load_steps=5 format=3 uid="uid://cmh5cgbjo3ce3"]
+
+[ext_resource type="Texture2D" uid="uid://c5f26wxmtxsjk" path="res://source/Images/player spaceship 2 (1).png" id="1_h4pis"]
+[ext_resource type="AudioStream" uid="uid://brdgf06u7j154" path="res://source/Audio files/laser-gun-81720 (1).mp3" id="2_e2nup"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d400s"]
-size = Vector2(4.8, 12)
+size = Vector2(5.75, 11.9)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2jihk"]
 
@@ -10,16 +13,29 @@ rotation = 1.5708
 collision_layer = 10
 collision_mask = 10
 
+[node name="BulletFireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_e2nup")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0.499959, -9.50011)
 scale = Vector2(20, 10)
 shape = SubResource("RectangleShape2D_d400s")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 scale = Vector2(100, 100)
 mesh = SubResource("BoxMesh_2jihk")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(0, -56)
 scale = Vector2(37.5, 25)
 mesh = SubResource("BoxMesh_2jihk")
+
+[node name="PlayerSpaceship2(1)" type="Sprite2D" parent="."]
+position = Vector2(0.999968, -9)
+texture = ExtResource("1_h4pis")
+
+[node name="BulletOriginPoint" type="Node2D" parent="."]
+position = Vector2(1.99974, -71)
+scale = Vector2(20, 10)

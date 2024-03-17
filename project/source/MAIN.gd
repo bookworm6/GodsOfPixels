@@ -9,17 +9,24 @@ var down
 var left
 var right
 var up
+var spawnTimerUpperLimit
+var spawnTimerLowerLimit
+var random 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	spawnTimerLowerLimit = 5
+	spawnTimerUpperLimit = 10
+	random = RandomNumberGenerator.new()
 	spawnTimerStarted = false
 	enemeySpawnList = []
 	down = true;
 
 func shoot():
+	Character.get_node("BulletFireSound").play()
 	var newBullet = bulletBase.instantiate()
-	newBullet.set_position(Character.position)
+	newBullet.set_position(Character.get_node("BulletOriginPoint").get_global_position())
 	add_child(newBullet)
 	newBullet.set_collision_mask_value(3,true)
 	newBullet.setAreaBodyCollisionMask(3,true)
@@ -34,11 +41,11 @@ func shield_move():
 	if down == true:
 		shield.position.x = Character.position.x
 		shield.position.y = Character.position.y + 100
-		shield.rotation_degrees = 0
+		shield.rotation_degrees = 180
 	elif left == true:
 		shield.position.x = Character.position.x - 100
 		shield.position.y = Character.position.y
-		shield.rotation_degrees = 90
+		shield.rotation_degrees = 270
 	elif right == true:
 		shield.position.x = Character.position.x + 100
 		shield.position.y = Character.position.y
@@ -52,7 +59,7 @@ func shield_move():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if spawnTimerStarted == false:
-		$Timer.start()
+		$Timer.start(random.randf_range(spawnTimerLowerLimit,spawnTimerUpperLimit))
 		spawnTimerStarted = true
 	if Input.is_action_just_pressed("SPACEBAR"):
 		shoot()
@@ -62,6 +69,11 @@ func _process(delta):
 	shield_move()
 	if Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 		shieldcheck()
+	if spawnTimerLowerLimit>.3:
+		spawnTimerLowerLimit-.001
+	if spawnTimerUpperLimit>1.5:
+		spawnTimerUpperLimit-.001
+	
 func shieldcheck():
 	if Input.is_action_just_pressed("ui_down"):
 		down = true
@@ -104,3 +116,7 @@ func _on_enemy_bullet_fired(position,targetPosition):
 
 func _on_character_body_2d_player_1_dead():
 	get_tree().change_scene_to_file("res://source/dead.tscn")
+
+
+func _on_background_music_finished():
+	$BackgroundMusic.play()
