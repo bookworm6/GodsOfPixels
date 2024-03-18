@@ -9,18 +9,13 @@
 [ext_resource type="FontFile" uid="uid://do8wi6bq4jfgv" path="res://source/fonts/Kenney High.ttf" id="7_im48a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1b0i"]
-size = Vector2(11, 656)
+size = Vector2(10.5, 666.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cf2oj"]
-size = Vector2(1180, 10)
+size = Vector2(1164, 11)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_e62wv")
-
-[node name="background" type="Sprite2D" parent="."]
-position = Vector2(585, 478.75)
-scale = Vector2(0.907295, 0.886225)
-texture = ExtResource("2_wh8bx")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_hi0ow")]
 position = Vector2(190, 160)
@@ -46,7 +41,7 @@ collision_layer = 512
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-9, 324)
+position = Vector2(-5, 323.25)
 shape = SubResource("RectangleShape2D_n1b0i")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
@@ -55,7 +50,7 @@ collision_layer = 512
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(1061, 324)
+position = Vector2(1057.25, 330.5)
 shape = SubResource("RectangleShape2D_n1b0i")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
@@ -63,7 +58,7 @@ collision_layer = 512
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(581, -8)
+position = Vector2(581, -5)
 shape = SubResource("RectangleShape2D_cf2oj")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
@@ -72,7 +67,7 @@ collision_layer = 512
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
-position = Vector2(574, 556)
+position = Vector2(576, 553)
 shape = SubResource("RectangleShape2D_cf2oj")
 
 [node name="Control" type="Control" parent="."]
@@ -92,6 +87,19 @@ theme_override_fonts/font = ExtResource("7_im48a")
 theme_override_font_sizes/font_size = 30
 text = "text"
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(576, 324)
+scale = Vector2(0.87538, 0.493151)
+texture = ExtResource("2_wh8bx")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="player1Dead" from="CharacterBody2D" to="." method="_on_character_body_2d_player_1_dead"]
 [connection signal="timeout" from="Timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

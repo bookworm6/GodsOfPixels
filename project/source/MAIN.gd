@@ -12,7 +12,12 @@ var up
 var spawnTimerUpperLimit
 var spawnTimerLowerLimit
 var random 
+var is_ready = true
+@onready var cooldown_timer = $CooldownTimer
 
+
+func _on_cooldown_timer_timeout():
+	is_ready = true 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,8 +67,12 @@ func _process(delta):
 	if spawnTimerStarted == false:
 		$Timer.start(random.randf_range(spawnTimerLowerLimit,spawnTimerUpperLimit))
 		spawnTimerStarted = true
-	if Input.is_action_just_pressed("SPACEBAR"):
+	if Input.is_action_just_pressed("SPACEBAR") and is_ready:
 		shoot()
+		is_ready = false
+		print("fire")
+		cooldown_timer.start()
+		
 	for enemy in enemeySpawnList:
 		if enemy!=null:
 			enemy.setTargetPosition(Character.position)
@@ -122,3 +131,4 @@ func _on_character_body_2d_player_1_dead():
 
 func _on_background_music_finished():
 	$BackgroundMusic.play()
+
