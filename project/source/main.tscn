@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3obgln0pies6"]
+[gd_scene load_steps=10 format=3 uid="uid://3obgln0pies6"]
 
 [ext_resource type="Script" path="res://source/MAIN.gd" id="1_e62wv"]
 [ext_resource type="PackedScene" uid="uid://cmh5cgbjo3ce3" path="res://source/Player_1.tscn" id="2_hi0ow"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cp1t7sdcugtu8" path="res://Shield.tscn" id="4_eb0c7"]
 [ext_resource type="Script" path="res://source/Player_1.gd" id="4_su2iw"]
 [ext_resource type="AudioStream" uid="uid://d324n7dh007jl" path="res://source/Audio files/trumpet music try 2.mp3" id="6_8841b"]
+[ext_resource type="FontFile" uid="uid://do8wi6bq4jfgv" path="res://source/fonts/Kenney High.ttf" id="7_im48a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1b0i"]
 size = Vector2(11, 656)
@@ -73,6 +74,23 @@ collision_mask = 512
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
 position = Vector2(574, 556)
 shape = SubResource("RectangleShape2D_cf2oj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 957.0
+offset_top = 26.0
+offset_right = 1131.0
+offset_bottom = 66.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -5.0
+offset_right = 166.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("7_im48a")
+theme_override_font_sizes/font_size = 30
+text = "text"
 
 [connection signal="player1Dead" from="CharacterBody2D" to="." method="_on_character_body_2d_player_1_dead"]
 [connection signal="timeout" from="Timer" to="." method="_on_spawn_timer_timeout"]

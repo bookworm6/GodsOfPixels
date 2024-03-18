@@ -10,7 +10,7 @@ script = ExtResource("1_ewsag")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0, 0.168627, 0.45098, 1)
+color = Color(0, 0.0156863, 0.317647, 1)
 
 [node name="Dead" type="Label" parent="."]
 offset_left = 179.0
@@ -34,7 +34,7 @@ text = "Restart"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_etsxr")
-volume_db = 6.42
+volume_db = 19.167
 autoplay = true
 
 [node name="aliensKilled" type="Label" parent="."]
@@ -63,15 +63,15 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Label" type="Label" parent="."]
-offset_left = 266.0
-offset_top = 502.0
-offset_right = 903.0
-offset_bottom = 619.0
+offset_left = 296.0
+offset_top = 492.0
+offset_right = 933.0
+offset_bottom = 609.0
 theme_override_fonts/font = ExtResource("2_geunt")
 theme_override_font_sizes/font_size = 30
-text = "                                           Game Studio: The Gods Of Pixels
-Artist and Sound Designer: Hugo                        Developer: Deven Velani
-Level Designer: Jason Luo                                    Team Lead: Perrin Anderson
+text = "                                     Game Studio: The Gods Of Pixels
+Artist and Sound Designer: Hugo                        Developer: Deven 
+Level Designer: Jason                                               Team Lead: Perrin 
 
 "
 

@@ -74,6 +74,7 @@ func _process(delta):
 		spawnTimerLowerLimit-.001
 	if spawnTimerUpperLimit>1.5:
 		spawnTimerUpperLimit-.001
+	$Control/Label.text = ("Aliens Killed:    "+str(Global.enemiesKilled))
 	
 func shieldcheck():
 	if Input.is_action_just_pressed("ui_down"):

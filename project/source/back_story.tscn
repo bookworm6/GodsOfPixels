@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b5hnvgbgxbg5a"]
+
+[node name="BackStory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0.168627, 0.45098, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -25.0
+offset_right = 1146.0
+offset_bottom = 647.0
+theme_override_font_sizes/font_size = 27
+text = "Five years ago, scientists began to detect strange anomalies in the cosmos. They started to write papers, and theorize. Eventually, Dr. Clarissa Martinez stood up and said what everyone else was too afraid to. The aliens, the Xenoinsecti, were coming. However, we convinced ourselves that we could fight them off. We built a small space fleet. Last year, the alien advance guard landed, and we fought them off with huge losses. We knew that we could not win again, so we started preparing ships for the evacuation of Earth.
+
+The evacuation ships were ready, but before they could launch, the second wave of Xenoinsecti arrived. You knew it was a suicide mission, but you heroically volunteered to hold off the hoard for as long as possible, and kill as many Xenoinsecti as you could, giving the earth precious time to evacuate.
+
+Now, you must fight."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 581.0
+offset_top = 545.0
+offset_right = 907.0
+offset_bottom = 595.0
+theme_override_font_sizes/font_size = 30
+text = "Return To Title Screen"
