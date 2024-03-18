@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dim2sp8x8p5wo"
-path.s3tc="res://.godot/imported/enemy spaceship.png-630b0d22df0f547eea01937dde9d5cdb.s3tc.ctex"
+path.s3tc="res://.godot/imported/enemySpaceship.png-2c6e6938eb6dc5cf72c5dcdd267143df.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://source/Images/enemy spaceship.png"
-dest_files=["res://.godot/imported/enemy spaceship.png-630b0d22df0f547eea01937dde9d5cdb.s3tc.ctex"]
+source_file="res://source/Images/enemySpaceship.png"
+dest_files=["res://.godot/imported/enemySpaceship.png-2c6e6938eb6dc5cf72c5dcdd267143df.s3tc.ctex"]
 
 [params]
 

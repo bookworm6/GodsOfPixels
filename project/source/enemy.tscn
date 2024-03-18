@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://chs55307icmtp"]
 
 [ext_resource type="Script" path="res://source/enemy.gd" id="1_d1pvh"]
-[ext_resource type="Texture2D" uid="uid://dim2sp8x8p5wo" path="res://source/Images/enemy spaceship.png" id="2_s12qt"]
+[ext_resource type="Texture2D" uid="uid://dim2sp8x8p5wo" path="res://source/Images/enemySpaceship.png" id="2_8akf1"]
 [ext_resource type="Texture2D" uid="uid://coqgkpbre87y5" path="res://source/Images/explosionSpriteSheet.png" id="3_jsxm7"]
 [ext_resource type="AudioStream" uid="uid://w7idcrgbuue7" path="res://source/Audio files/explosionCrunch_000.ogg" id="4_rhikt"]
 
@@ -172,7 +172,7 @@ position = Vector2(37, -7)
 position = Vector2(-7, -7)
 rotation = -1.5708
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_s12qt")
+texture = ExtResource("2_8akf1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
