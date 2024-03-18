@@ -15,7 +15,6 @@ var currentlyExploding
 
 func _ready():
 	$EnemySpaceship.show() #this line should not be necessary, but it might fix the problem with GitHub
-	$EnemySpaceship.scale = Vector2(.6,.6)
 	currentlyExploding = false
 	random = RandomNumberGenerator.new()
 	$AnimatedSprite2D.hide()
