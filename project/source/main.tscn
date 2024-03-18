@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dux6ej64mwmc5" path="res://source/Images/Screenshot 2024-03-17 at 12.34.50 PM.png" id="2_wh8bx"]
 [ext_resource type="PackedScene" uid="uid://cp1t7sdcugtu8" path="res://Shield.tscn" id="4_eb0c7"]
 [ext_resource type="Script" path="res://source/Player_1.gd" id="4_su2iw"]
-[ext_resource type="AudioStream" uid="uid://cl7n28l4cragc" path="res://source/Audio files/background.mp3" id="6_mu6ls"]
+[ext_resource type="AudioStream" uid="uid://d324n7dh007jl" path="res://source/Audio files/trumpet music try 2.mp3" id="6_8841b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1b0i"]
 size = Vector2(11, 656)
@@ -36,8 +36,8 @@ one_shot = true
 position = Vector2(190, 250)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_mu6ls")
-volume_db = -14.0
+stream = ExtResource("6_8841b")
+volume_db = -4.584
 autoplay = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]

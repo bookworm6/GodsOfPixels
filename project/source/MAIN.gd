@@ -16,6 +16,7 @@ var random
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.enemiesKilled = 0
 	spawnTimerLowerLimit = 5
 	spawnTimerUpperLimit = 10
 	random = RandomNumberGenerator.new()
