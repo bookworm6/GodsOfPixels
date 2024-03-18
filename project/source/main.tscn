@@ -97,6 +97,7 @@ scale = Vector2(0.87538, 0.493151)
 texture = ExtResource("2_wh8bx")
 
 [node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="player1Dead" from="CharacterBody2D" to="." method="_on_character_body_2d_player_1_dead"]
