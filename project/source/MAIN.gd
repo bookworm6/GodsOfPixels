@@ -16,6 +16,7 @@ var random
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.enemiesKilled = 0
 	spawnTimerLowerLimit = 5
 	spawnTimerUpperLimit = 10
 	random = RandomNumberGenerator.new()
@@ -73,6 +74,7 @@ func _process(delta):
 		spawnTimerLowerLimit-.001
 	if spawnTimerUpperLimit>1.5:
 		spawnTimerUpperLimit-.001
+	$Control/Label.text = ("Aliens Killed:    "+str(Global.enemiesKilled))
 	
 func shieldcheck():
 	if Input.is_action_just_pressed("ui_down"):

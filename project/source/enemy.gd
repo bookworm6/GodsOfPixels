@@ -123,6 +123,7 @@ func setTargetPosition(vector2Position):
 
 func bulletColision():
 	if currentlyExploding == false:
+		Global.enemiesKilled+=1
 		currentlyExploding = true
 		velocity = Vector2.ZERO
 		$Timer.stop()
