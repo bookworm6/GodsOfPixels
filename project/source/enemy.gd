@@ -124,8 +124,8 @@ func setTargetPosition(vector2Position):
 
 func bulletColision():
 	if currentlyExploding == false:
-		Global.enemiesKilled+=1
 		currentlyExploding = true
+		Global.enemiesKilled+=1
 		velocity = Vector2.ZERO
 		$Timer.stop()
 		print("animation will play here")
@@ -133,7 +133,10 @@ func bulletColision():
 		$AnimatedSprite2D.show()
 		$AudioStreamPlayer2D.play()
 		$AnimatedSprite2D.play("explode")
-		$AnimationPlayer.play("hit")
+		$EnemySpaceship.hide()
+		#$AnimationPlayer.play("hit")
+	
+
 	
 	
 	#$MeshInstance2D.hide()
@@ -143,3 +146,7 @@ func bulletColision():
 
 	
 
+
+
+func _on_animated_sprite_2d_animation_finished():
+	queue_free()
